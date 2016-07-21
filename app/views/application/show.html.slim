@@ -1,0 +1,22 @@
+h1 = resource.title
+hr
+p
+  span.glyphicon.glyphicon-time
+  | Created at #{resource.pretty_date}
+  br
+  | Tags #{resource.raw_tags}
+hr
+= resource.body
+hr
+.well
+  h4 Leave a comment:
+  = form_for [resource, Comment.new], remote: true do |f|
+    .form-group
+      = f.text_field :user, class: 'form-control', placeholder: 'Write your name here...'
+    .form-group
+      = f.text_area :body, class: 'form-control', rows: 3, placeholder: 'Write your comment here...'
+    = f.submit 'Submit', class: 'btn btn-primary'
+hr
+.media
+  .media-body
+    = render resource.comments

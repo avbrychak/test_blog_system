@@ -29,8 +29,10 @@ html lang="en"
           a.navbar-brand href="#" TestBlogSystem
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
-            li.active= link_to "Posts", "#"
-            li= link_to "Articles", "#"
+            li class=('active' if params[:controller]=='posts')
+              = link_to "Posts", posts_path
+            li class=('active' if params[:controller]=='articles')
+              = link_to "Articles", articles_path
 
     .container.main
       .row

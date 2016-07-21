@@ -6,7 +6,7 @@ gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use devise for authentication
-gem 'devise'
+# gem 'devise'
 # Use inherited resources
 gem 'inherited_resources'
 # Use slim for templates
@@ -40,10 +40,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "responders"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry'
 end
 
 group :development do

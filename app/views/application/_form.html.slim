@@ -1,4 +1,8 @@
-= form_for @post, html: { class: "form-horizontal" } do |f|
+= form_for resource, html: { class: "form-horizontal" } do |f|
+  .form-group
+    = f.label :tags, class: 'control-label col-md-2'
+    .col-md-10
+      = text_field_tag :tags, resource.raw_tags, class: 'text_field form-control', placeholder: 'input tags separated by spaces'
   .form-group
     = f.label :title, class: 'control-label col-md-2'
     .col-md-10
@@ -10,4 +14,4 @@
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit nil, class: 'btn btn-primary'
-      = link_to t('.cancel', default: t("helpers.links.cancel")), posts_path, class: 'btn btn-default'
+      = link_to t('.cancel', default: t("helpers.links.cancel")), collection_path, class: 'btn btn-default'

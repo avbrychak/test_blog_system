@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
-  inherit_resources
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action lambda{ resource.user = current_user }
-
-  def show
-    @article = Article.find(params[:id])
-    @comments = @article.comments
-    show!
+  include Blogable
+  
+  protected
+  def collection
+    super.includes(:comments)
+  end
+  
+  private
+  def article_params
+    params.require(:article).permit(:title, :body)
   end
 end

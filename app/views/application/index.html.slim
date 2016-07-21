@@ -1,0 +1,32 @@
+h1 Listing #{resource_class.to_s.pluralize}
+
+table.table
+  thead
+    tr
+      th Title
+      th Body
+      th Last Comments
+      th Tags
+      th
+      th
+      th
+
+  tbody
+    - collection.each do |resource|
+      tr
+        td = resource.title
+        td = resource.body
+        td
+          - resource.comments.last(3).each do |c|
+            = c.short_form
+            br
+        td = resource.raw_tags
+        td = link_to 'Show', resource
+        td = link_to 'Edit', edit_resource_path(resource)
+        td = link_to 'Destroy', resource, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to "New #{resource_class}", new_resource_path
+
+

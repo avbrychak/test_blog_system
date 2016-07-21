@@ -1,9 +1,8 @@
 class Comment < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :post
-  belongs_to :article
+  include Datable
+  belongs_to :blog
 
-  def pretty_date
-    created_at.to_formatted_s(:long)
+  def short_form
+    "#{user}: #{body}"
   end
 end

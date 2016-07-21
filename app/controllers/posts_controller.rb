@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
-  inherit_resources
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action lambda{ resource.user = current_user }
+  include Blogable
 
-  def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
-    show!
+  protected
+  def collection
+    super.includes(:comments)
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:title, :body)
   end
 end
