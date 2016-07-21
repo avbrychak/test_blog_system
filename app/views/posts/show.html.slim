@@ -1,0 +1,23 @@
+h1 = @post.title
+p.lead by #{@post.user.name}
+hr
+p
+  span.glyphicon.glyphicon-time
+  | Posted on #{@post.pretty_date}
+hr
+= @post.body
+hr
+.well
+  h4 Leave a comment:
+  = form_for [@post, @post.comments.build], remote: true do |f|
+    .form-group
+      = f.text_area :body, class: 'form-control', rows: 3, placeholder: 'Write your comment here...'
+    = f.submit 'Submit', class: 'btn btn-primary'
+hr
+- if @comments.any?
+  - for comment in @comments
+    - unless comment.user.nil?
+      .media
+        .media-body
+          .media-heading #{comment.user.name} #{comment.pretty_date}
+          = comment.body

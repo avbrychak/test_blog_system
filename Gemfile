@@ -5,8 +5,17 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
+# Use devise for authentication
+gem 'devise'
+# Use inherited resources
+gem 'inherited_resources'
+# Use slim for templates
+gem 'slim-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use bootstrap
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
